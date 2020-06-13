@@ -27,7 +27,7 @@ def scraper():
     collection.drop()
     mars_result_data = {}
     mars_result_data = scrape_mars.scrape()
-    collection.insert_one(mars_result_data)
+    collection.update({},mars_result_data, upsert=True)
     return redirect("/", code=302)
 
 if __name__ == "__main__":
